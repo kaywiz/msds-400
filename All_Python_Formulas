@@ -1,0 +1,333 @@
+###IMPORT ---------------------------------------------------
+from sympy import *
+from numpy import *
+from mpmath import *
+import math
+import matplotlib.pyplot as plt
+x, y, z = symbols('x y z')
+
+###SOLVERS AND SUBSTITUTION ----------------------------------
+
+#solve for x when func = 0
+func = #insert function
+ans = solve(func,x) #x is the variable to solve by
+print(ans)
+
+#solve for x when func = non-zero
+func = #insert function
+ans = solve(Eq(func,2),x) #x is the variable to solve by, insert value the equation equals
+print(ans)
+
+#systems of linear equations in terms of x and y
+A = Matrix([[4, 2], [2, 2]]) #insert coefficients of equations on rhs
+b = Matrix([-2, 0]) #insert constants on lhs
+ans = linsolve((A, b), [x, y])
+print(ans)
+
+#systems of nonlinear equations in terms of x and y
+func1 = #insert function 1
+func2 = #insert function 2
+ans = nonlinsolve([func1, func2], [x, y])
+print(ans)
+
+ans = #insert function
+print(ans.subs({x:14, y:16})) #insert substitution values
+
+###REVENUE/COST + BREAKEVEN ANALYSIS ----------------------------------------------------
+
+c = #insert cost function in terms of x
+r = #insert revenue function in terms of x
+ans = solve(r - c,x)
+print(ans)
+
+#SCATTERPLOTS + CORRELATION COEFFICIENTS + REGRESSION LINES -----------------------------
+
+import numpy
+from numpy import sqrt
+
+sig_x = #addition of all x's
+sig_y = #addition of all y's
+sig_x_y = #addition of all x's + all y's
+sig_x_2 = #addition of all x^2s
+sig_y_2 = #addition of all y^2s
+n = #number of items
+correlation_coefficient = (n*(sig_x_y) - (sig_x)*(sig_y)) / (sqrt((n*sig_x_2)-sig_x**2)*sqrt(((n*sig_y_2)-sig_y**2))) #equation for correlation coefficient
+print('r = {}'.format(correlation_coefficient))
+
+#import
+import numpy as np
+from sympy import *
+import matplotlib.pyplot as plt
+%matplotlib inline
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+#data
+x = [1,2,3,4,5,6,7,8,9,10]
+y = [.1,.8,1.1,2.1,2.9,3.1,3.1,4.1,4.6,5.1]
+
+#get regression line from data
+mymodel = np.poly1d(np.polyfit(x, y, 1))
+print("Regression Equation: y =",mymodel)
+
+#plot data and regression
+myline = np.linspace(1, 6)
+plt.scatter(x, y)
+plt.ylabel('y')
+plt.xlabel('x')
+plt.title('Graph Title')
+plt.plot(myline, mymodel(myline))
+plt.show()
+
+x, y, z = symbols('x y z')
+
+#substituting for predicting value
+ans = #insert regression line
+print(f"ans: {ans.subs({x:11})}") #insert value
+
+###SYTEMS OF LINEAR EQUATIONS ---------------------------------------------
+
+A = Matrix([[140, 140, 160], [170, 80, 80], [4.97, 4.45, 4.65]])
+b = Matrix([34400, 31800, 310])
+ans = linsolve((A, b), [x, y, z])
+print(ans)
+
+###BAYES THEOREM -----------------------------------------------------------
+
+p_a = #prob of a
+p_b_a = #prob of b given a
+p_n_a = #prob of not a
+p_b_n_a = #prob of b given not a
+
+bayes = (p_a * p_b_a) / (p_a*p_b_a + p_n_a*p_b_n_a)
+print(bayes)
+
+###DERIVATIVES ---------------------------------------------------------------
+
+from sympy import *
+import math
+init_printing(use_unicode=False, wrap_line=False)
+x = Symbol('x')
+
+#sub for value
+func = #insert function
+print(f"ans: {func.subs({x:10})}") #insert value
+
+#find derivative of function
+ans = diff(func, x)
+print("deriv: ",ans)
+
+#find derivative at value
+print(f"ans: {ans.subs({x:10})}") #Insert value
+
+###DERIVATIVES + GRAPHS OF POLYNOMIALS ------------------------------------------
+
+print('Original')
+p = poly1d([1.6812, -18.252, 62.46, 6.8482, 1043]) #polynomial in normal form
+print(p)
+
+print('\nFirst Derivative')
+g = p.deriv(m=1)
+print(g)
+print(g.roots)
+
+print('\nSecond Derivative')
+q = p.deriv(m=2)
+print(q)
+print(q.roots)
+
+x = linspace(0, 4, 101) #axis limits
+y = p(x)
+yg = g(x)  # These statements define points for plotting.
+yq = q(x)
+y0 = 0*x   # This statement defines the y axis for plotting.
+
+plt.figure()
+plt.plot(x, y, label='y=p(x)')
+plt.plot(x, yg, label='First Derivative')
+plt.plot(x, yq, label='Second Derivative')
+plt.legend(loc='best')
+
+plt.plot(x, y0, c='k')
+plt.grid(linewidth=.5)
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+plt.title('Plot Showing Function, First and Second Derivatives')
+plt.show()
+
+x = #enter x value
+g = #enter original equation
+print(g)
+
+###INDEFINITE INTEGRAL + SOLVER ---------------------------------------
+
+from sympy import *
+import math
+init_printing(use_unicode=False, wrap_line=False)
+x = Symbol('x')
+
+func = #insert function
+integ = integrate(func,x)
+print(integ)
+f = lambdify(x, integ)
+
+###DEFINITE INTEGRAL ---------------------------------------------------
+
+from sympy import *
+import math
+init_printing(use_unicode=False, wrap_line=False)
+x = Symbol('x')
+
+func = #insert function
+a = #left limit
+b = #right limit
+integ = integrate(func,(x,a,b))
+
+###MEAN + STANDARD DEVIATION -----------------------------
+
+from sympy import *
+import math
+init_printing(use_unicode=False, wrap_line=False)
+x = Symbol('x')
+
+func = #insert
+a = #insert
+b = #insert
+
+mean = integrate(func*x,(x,a,b)) #mean 
+print(mean)
+
+func = #insert
+std_dev = sqrt(integrate(func*(x**2),(x,a,b)) - mean**2) #standard deviation
+print(std_dev)
+print(integ)
+f(0)
+
+###EXPONENTIALLY DISTRIBUTED PROBABILITY FUNCTION -----------------------------
+
+from sympy import *
+import math
+init_printing(use_unicode=False, wrap_line=False)
+x = Symbol('x')
+
+a = #given
+ex_val_exp = 1 / a
+std_dev_exp = 1 / a
+prob_dens_exp = a*exp(-a*x) #for 0 to oo, probability density function for exponentially distributed
+
+#part 1
+print(ex_val_exp)
+print(std_dev_exp)
+
+#part 2
+prob = integrate(prob_dens_exp, (x,0,oo))
+print(prob)
+
+#solve integral for integral limit
+print(solve(Eq(integrate(prob_dens_exp, (t,0,x)),.80), x))
+
+###MEAN + SD OF UNIFORM DISTRIBUTION ------------------------------------------
+
+from sympy import *
+import math
+init_printing(use_unicode=False, wrap_line=False)
+x = Symbol('x')
+
+a = #insert
+b = #insert
+
+uni_mean = .5 * (b + a) #mean for probability density probability function
+print(uni_mean) 
+
+a1 = #insert
+b1 = #insert
+uni_prob = 1 / (b - a)
+ans = integrate(uni_prob, (x,a1,b1))
+print(ans)
+
+###PARTIAL DERIVATIVES ---------------------------------------------------------
+
+from sympy import symbols, Derivative, Matrix, S, linsolve, nonlinsolve, solve
+import numpy as np
+from mpmath import pi
+
+# declare the symbols
+x, y, z = symbols('x y z')
+
+# declare the function
+f = #insert function
+
+partialderiv= Derivative(f, x)
+pd_fx = partialderiv.doit()
+print(f"df/dx = {pd_fx}")
+partialderiv= Derivative(f, y)
+pd_fy = partialderiv.doit()
+print(f"df/dy = {pd_fy}")
+
+ans = nonlinsolve([pd_fx, pd_fy], [x, y]) #for nonlinear
+print(ans)
+
+partialderiv= Derivative(pd_fx, x)
+pd_fxx = partialderiv.doit()
+print(f"f_xx = {pd_fxx}")
+partialderiv= Derivative(pd_fy, y)
+pd_fyy = partialderiv.doit()
+print(f"f_yy = {pd_fyy}")
+partialderiv= Derivative(pd_fx, y)
+pd_fxy = partialderiv.doit()
+print(f"f_xy = {pd_fxy}")
+
+D = pd_fxx*pd_fyy-pd_fxy**2 # find D
+print(D)
+print(D.subs({x:14, y:16})) #insert values from solve above
+
+print(f.subs({x:14, y:16})) #find function values from x and y
+
+###PARTIAL DERIVATIVES WITH CONSTRAINTS -----------------------------------
+
+from sympy import symbols, Derivative, Matrix, S, linsolve, nonlinsolve, solve
+import numpy as np
+from mpmath import pi
+
+x,y,l = symbols('x y l')
+
+# Declare f(x,y), g(x,y) and H(x,y)
+f = #function to maximized
+g = #constraint function
+H = f - l*(g)
+
+# Evaluate derivatives of H with respect to x and y separately
+pd_Hx = Derivative(H, x).doit()
+pd_Hy = Derivative(H, y).doit()
+
+print(f"dH/dx = {pd_Hx}")
+print(f"dH/dy = {pd_Hy}")
+
+sols = solve([pd_Hx, pd_Hy, g], [x, y, l],dict=True)
+print("Solutions of the equations =",sols)
+
+# find the maximum in this example
+print(f"\nf(x,y) is maximized at the following values-->")
+maxvalue = max(sols, key=lambda x:x[l])
+print(f"x = {maxvalue[x]}")
+print(f"y = {maxvalue[y]}")
+
+# substitute the values of x and y to get the relative maximum of f(x,y)
+f.subs({x:maxvalue[x], y: maxvalue[y]})
+
+###TOTAL DERIVATIVES --------------------------------------------------
+
+x, y, dx, dy = symbols('x y dx dy')
+
+f = #insert function
+
+pd_fx = Derivative(f, x).doit()
+pd_fy = Derivative(f, y).doit()
+
+print(f"dH/dx = {pd_Hx}")
+print(f"dH/dy = {pd_Hy}")
+
+#total differential of z
+dz = pd_fx*dx + pd_fy*dy
+
+dz.subs({x:6, y:-6, dx:.03, dy:.08}) #insert values
